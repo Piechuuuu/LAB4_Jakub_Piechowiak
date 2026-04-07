@@ -16,4 +16,4 @@ COPY . .
 EXPOSE 5000
 
 # produkcyjnie: gunicorn
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "app:app"]
+CMD gunicorn -w 2 -b 0.0.0.0:${PORT:-5000} app:app
