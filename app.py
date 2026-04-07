@@ -30,7 +30,11 @@ except Exception as e:
 
 @app.get("/health")
 def health():
-    return jsonify(status="ok", redis=bool(r))
+    return jsonify(
+        status="ok",
+        redis=bool(r),
+        app_mode=os.getenv("APP_MODE", "not-set"),
+    )
 
 @app.post("/predict")
 def predict():
